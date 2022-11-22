@@ -1,4 +1,27 @@
 import store
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+
+
+app = FastAPI()
+
+@app.get('/')
+def get_list():
+    return [1,2,3,4]
+
+@app.get('/contact')
+def get_list():
+    return { 'name' : 'Platzi'}
+
+@app.get('/web-HTML', response_class=HTMLResponse)
+def get_list():
+    return """
+        <h1>Hola soy tu Página</h1>
+        <p>Este es un párrafo de tu página</p>
+    """ 
+    
+
+
 
 def run():
     store.get_categories()
